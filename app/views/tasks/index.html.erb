@@ -1,0 +1,19 @@
+  <h2>Enter a new task : <%= link_to "Create !", new_task_path %></h2>
+
+
+<% @tasks.each do |task| %>
+  <h2>Tasks name : <%= link_to task.name, task_path(task) %></h2>
+  <p>Description : <%= task.description %></p>
+  <p><strong>
+    <% if task.status == true %>
+      <%="Done"%>
+    <% else %>
+      <%="TO DO !"%>
+    <% end %>
+  </strong></p>
+  <p><%=link_to "update this task", edit_task_path(task) %></p>
+  <p>
+    <%= link_to "Delete this task", task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></p>
+<% end %>
